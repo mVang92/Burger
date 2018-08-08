@@ -4,17 +4,19 @@ var router = express.Router();
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-    burgersCtrl.all(function (data) {
+    console.log("router.get function")
+    burgersCtrl.selectAll(function (data) {
         var hbsObject = {
             burgersCtrl: data
         };
-        console.log(hbsObject);
+        console.log("hbsObject: " + hbsObject);
         res.render("index", hbsObject);
     });
 });
 
-router.post("/api/cats", function (req, res) {
-    burgersCtrl.create([
+router.post("/api/burgers", function (req, res) {
+    console.log("router.post function")
+    burgersCtrl.insertOne([
         "name", "sleepy"
     ], [
             req.body.name, req.body.sleepy
