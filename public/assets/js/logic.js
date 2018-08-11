@@ -1,22 +1,19 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-console.log("Logic linked!")
+$(document).ready(function () {
+    $("#submit").prop("disabled", true);
+    // Enables the submit button only when there is text in the dialog box
+    // Diables the button if text is not present
+    $("#newBurger").keyup(function () {
+        if ($("#newBurger").val() == "") {
+            $("#submit").prop("disabled", true);
+        } else {
+            $("#submit").removeAttr("disabled");
+        };
+    });
+});
 
 $(function () {
-    $(".deleteBurger").click(function (event) {
-        event.preventDefault();
-        var id = $(this).data("id");
-        console.log(id);
-        $.ajax("/api/burgers/" + id, {
-            type: "DELETE"
-        }).then(
-            function () {
-                console.log("Deleted: ", id);
-                location.reload();
-            }
-        );
-    });
-
-    $(".devourBurger").click(function (event) {
+    $(".devourBurger").on("click", function (event) {
         event.preventDefault();
         var id = $(this).data("id");
         var objColVals = {
@@ -27,7 +24,7 @@ $(function () {
             type: "PUT",
             data: objColVals
         }).then(
-            function() {
+            function () {
                 console.log("Devoured: ", id);
                 location.reload();
             }
@@ -45,8 +42,10 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(
-            function() {
+            function () {
                 console.log("New burger: ", newBurger.burger_name);
+                $("#newBurger").val("");
+                $("#submit").prop("disabled", true);
                 location.reload();
             }
         );

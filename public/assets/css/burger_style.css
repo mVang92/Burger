@@ -1,3 +1,19 @@
-body {
-  background: lightgrey;
+div {
+  border: 1px solid red;
+}
+
+#pageTitle {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.jumbotron {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#mainImg,
+#submit {
+  margin: auto;
+  display: block;
 }

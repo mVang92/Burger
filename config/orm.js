@@ -40,25 +40,22 @@ function objToSql(ob) {
 
 var orm = {
     // Select all burgers
-    selectAll: function (tableInput, cb) {
+    selectAll: function(tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
-
-        console.log("ORM selectAll query: " + queryString);
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-            console.log("ORM selectAll result: " + result)
-            cb(result);
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+          console.log(queryString)
+          cb(result);
         });
     },
-    // Insert one buger into the database
+    // Insert one burger into the database
     insertOne: function (tableInput, cols, vals, cb) {
         var queryString = "INSERT INTO " + tableInput;
 
         queryString += " (";
-        queryString += cols.toString();
+        queryString += cols;
         queryString += ") ";
         queryString += "VALUES (";
         queryString += printQuestionMarks(vals.length);
@@ -74,7 +71,7 @@ var orm = {
             cb(result);
         });
     },
-
+    // Update one burger to the database
     updateOne: function (tableInput, objColVals, condition, cb) {
         var queryString = "UPDATE " + tableInput;
 
@@ -89,22 +86,6 @@ var orm = {
                 throw err;
             }
             console.log("ORM updateOne result: " + result)
-            cb(result);
-        });
-    },
-
-    deleteOne: function (tableInput, condition, cb) {
-        var queryString = "DELETE FROM " + tableInput;
-
-        queryString += " WHERE " + condition;
-
-        console.log("ORM deleteOne query: " + queryString);
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-            console.log("ORM deleteOne result: " + result)
             cb(result);
         });
     }

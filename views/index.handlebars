@@ -1,30 +1,40 @@
-<h1>Eat-Da-Burger</h1>
-
-<ul>
-  {{#each cats}} {{#unless sleepy}} {{> cats/cat-block sleep=true}} {{/unless}} {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}} {{#if sleepy}} {{> cats/cat-block sleep=false}} {{/if}} {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
-<form class="createForm">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+<div class="container">
+  <div class="jumbotron">
+    <h1 id="pageTitle">Eat-Da-Burger</h1>
+    <img id="mainImg" src="assets/img/patty.gif">
+    <hr>
+    <form class="createForm">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="newBurger">New Burger</label>
+          <span>
+            <input type="text" id="newBurger">
+          </span>
+        </div>
+        <div class="col-md-6">
+          <input id="submit" type="submit" value="Submit Burger">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <h2 style="text-align: center">Burgers to Eat</h2>
+          {{#each burgers}} {{#unless devoured}}
+          <p class="burger">
+            {{this.id}}. {{this.burger_name}}
+            <button data-id="{{this.id}}" class="devourBurger btn btn-danger">Devour!</button>
+          </p>
+          <hr> {{/unless}} {{/each}}
+        </div>
+        <div class="col-md-6">
+          <h2 style="text-align: center">Devoured Burgers</h2>
+          {{#each burgers}} {{#if devoured}}
+          <p class="burger eaten">
+            {{this.id}}. {{this.burger_name}}
+          </p>
+          <hr> {{/if}} {{/each}}
+        </div>
+      </div>
+    </form>
   </div>
-
-  <div class="form-group">
-    <label for="slee">Sleepy?</label>
-    <br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!
-    <br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
-
-  <button type="submit">Submit Burger</button>
-</form>
+</div>
