@@ -8,13 +8,11 @@ router.get("/", function (req, res) {
         var hbsObject = {
             burgers: data
         };
-        console.log("hbsObject: " + hbsObject);
         res.render("index", hbsObject);
     });
 });
 
 router.post("/api/burgers", function (req, res) {
-    console.log("router.post function")
     burgersCtrl.insertOne([
         "burger_name"
     ], [
@@ -23,12 +21,13 @@ router.post("/api/burgers", function (req, res) {
             // Send back the ID of the new quote
             res.json({ id: result.insertId });
         });
+        console.log("User added: " + req.body.burger_name)
 });
 
 router.put("/api/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 
-    console.log("condition", condition);
+    console.log("Devoured burger with", condition);
 
     burgersCtrl.updateOne({
         devoured: req.body.devoured

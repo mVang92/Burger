@@ -13,7 +13,7 @@ $(document).ready(function () {
 });
 
 $(function () {
-    $(".devourBurger").on("click", function (event) {
+    $(".devourBurger").click(function (event) {
         event.preventDefault();
         var id = $(this).data("id");
         var objColVals = {
@@ -23,9 +23,8 @@ $(function () {
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: objColVals
-        }).then(
-            function () {
-                console.log("Devoured: ", id);
+        }).then(function () {
+                console.log("Devoured burger number: ", id);
                 location.reload();
             }
         );
@@ -41,9 +40,8 @@ $(function () {
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
-        }).then(
-            function () {
-                console.log("New burger: ", newBurger.burger_name);
+        }).then(function () {
+                console.log("Added new burger: ", newBurger.burger_name);
                 $("#newBurger").val("");
                 $("#submit").prop("disabled", true);
                 location.reload();

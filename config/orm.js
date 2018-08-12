@@ -46,7 +46,7 @@ var orm = {
           if (err) {
             throw err;
           }
-          console.log(queryString)
+          console.log("ORM selectAll query: " + queryString)
           cb(result);
         });
     },
@@ -61,13 +61,11 @@ var orm = {
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        console.log("ORM insertOne query: " + queryString);
-
         connection.query(queryString, vals, function (err, result) {
             if (err) {
                 throw err;
             }
-            console.log("ORM insertOne result: " + result)
+            console.log("ORM insertOne query: " + queryString);
             cb(result);
         });
     },
@@ -79,13 +77,11 @@ var orm = {
         queryString += objToSql(objColVals);
         queryString += " WHERE " + condition;
 
-        console.log("ORM updateOne query: " + queryString);
-
         connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
-            console.log("ORM updateOne result: " + result)
+            console.log("ORM updateOne query: " + queryString);
             cb(result);
         });
     }

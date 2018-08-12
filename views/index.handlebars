@@ -4,21 +4,18 @@
     <img id="mainImg" src="assets/img/patty.gif">
     <hr>
     <form class="createForm">
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row inputRow">
+        <div class="col-md-12">
           <label for="newBurger">New Burger</label>
-          <span>
-            <input type="text" id="newBurger">
-          </span>
-        </div>
-        <div class="col-md-6">
-          <input id="submit" type="submit" value="Submit Burger">
+          <input type="text" id="newBurger">
+          <input id="submit" class="btn" type="submit" value="Submit Burger">
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col-md-6">
           <h2 style="text-align: center">Burgers to Eat</h2>
+          <hr>
           {{#each burgers}} {{#unless devoured}}
           <p class="burger">
             {{this.id}}. {{this.burger_name}}
@@ -28,6 +25,7 @@
         </div>
         <div class="col-md-6">
           <h2 style="text-align: center">Devoured Burgers</h2>
+          <hr>
           {{#each burgers}} {{#if devoured}}
           <p class="burger eaten">
             {{this.id}}. {{this.burger_name}}

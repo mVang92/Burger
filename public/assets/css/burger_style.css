@@ -2,18 +2,47 @@
   border: 1px solid red;
 } */
 
+body {
+  background: url("../img/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 #pageTitle {
+  background: lightgrey;
   text-align: center;
   margin-bottom: 10px;
 }
 
 .jumbotron {
+  background: rgba(235, 235, 235, 0.7);
+  border: 1px solid black;
+  box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.5);
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-#mainImg,
-#submit {
+#mainImg {
   margin: auto;
   display: block;
+  width: 55%;
+}
+
+.createForm {
+  background: lightgrey;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.inputRow {
+  text-align: center;
+}
+
+#submit {
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+#submit:hover {
+  transition-duration: 0.2s;
+  background: rgb(128, 255, 128);
 }
