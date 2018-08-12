@@ -5,13 +5,13 @@ var router = express.Router();
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
     burgersCtrl.selectAll(function (data) {
-      var hbsObject = {
-        burgers: data
-      };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
+        var hbsObject = {
+            burgers: data
+        };
+        console.log("hbsObject: " + hbsObject);
+        res.render("index", hbsObject);
     });
-  });
+});
 
 router.post("/api/burgers", function (req, res) {
     console.log("router.post function")
