@@ -15,21 +15,14 @@
       <div class="row">
         <div class="col-md-6">
           <h2 style="text-align: center">Burgers to Eat</h2>
-          <hr>
-          {{#each burgers}} {{#unless devoured}}
-          <p class="burger">
-            {{this.id}}. {{this.burger_name}}
-            <button data-id="{{this.id}}" class="devourBurger btn btn-danger">Devour!</button>
-          </p>
+          <hr> {{#each burgers}} {{#unless devoured}}
+          <p>{{> burgers/burger-block}}</p>
           <hr> {{/unless}} {{/each}}
         </div>
         <div class="col-md-6">
           <h2 style="text-align: center">Devoured Burgers</h2>
-          <hr>
-          {{#each burgers}} {{#if devoured}}
-          <p class="burger eaten">
-            {{this.id}}. {{this.burger_name}}
-          </p>
+          <hr> {{#each burgers}} {{#if devoured}}
+          <p>{{> burgers/burger-block}}</p>
           <hr> {{/if}} {{/each}}
         </div>
       </div>

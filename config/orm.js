@@ -84,6 +84,15 @@ var orm = {
             console.log("ORM updateOne query: " + queryString);
             cb(result);
         });
+    },
+    // Delete a burger from the database
+    deleteOne: function (tableInput, condition, cb) {
+        var queryString = "DELETE FROM " + tableInput;
+        queryString += " WHERE " + condition;
+        connection.query(queryString, function (err, result) {
+            if (err) throw err;
+            cb(result);
+        });
     }
 }
 

@@ -24,9 +24,9 @@ $(function () {
             type: "PUT",
             data: objColVals
         }).then(function () {
-                console.log("Devoured burger number: ", id);
-                location.reload();
-            }
+            console.log("Devoured burger number: ", id);
+            location.reload();
+        }
         );
     });
 
@@ -41,9 +41,22 @@ $(function () {
             type: "POST",
             data: newBurger
         }).then(function () {
-                console.log("Added new burger: ", newBurger.burger_name);
-                $("#newBurger").val("");
-                $("#submit").prop("disabled", true);
+            console.log("Added new burger: ", newBurger.burger_name);
+            $("#newBurger").val("");
+            $("#submit").prop("disabled", true);
+            location.reload();
+        }
+        );
+    });
+
+    $(".deleteBurger").click(function (event) {
+        event.preventDefault();
+        var id = $(this).data("id");
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(
+            function () {
+                console.log("Deleted burger: ", id);
                 location.reload();
             }
         );

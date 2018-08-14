@@ -1,8 +1,0 @@
-<p>
-    {{#unless devoured}}
-    <i class="devourBurger fas fa-utensils" data-id="{{this.id}}"></i>
-    {{/unless}}
-
-    <i class="deleteBurger fas fa-trash-alt" data-id="{{this.id}}"></i>
-    {{burger_name}}: {{#unless devoured}} Ready to eat! {{/unless}} {{#if devoured}} Devoured! {{/if}}
-</p>
