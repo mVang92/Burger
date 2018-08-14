@@ -90,7 +90,10 @@ var orm = {
         var queryString = "DELETE FROM " + tableInput;
         queryString += " WHERE " + condition;
         connection.query(queryString, function (err, result) {
-            if (err) throw err;
+            if (err) {
+                throw err;
+            }
+            console.log("ORM deleteOne query: " + queryString);
             cb(result);
         });
     }

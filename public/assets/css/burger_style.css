@@ -2,15 +2,19 @@
   border: 1px solid red;
 } */
 
+header {
+  background: rgba(128, 128, 128, 0.7);
+  color: white;
+  border-bottom: 1px solid white;
+  text-align: center;
+  font-size: 40px;   
+  margin-bottom: 10px;
+  text-shadow: 3px 3px black;
+}
+
 body {
   background: url("../img/background.jpg") no-repeat center center fixed;
   background-size: cover;
-}
-
-#pageTitle {
-  background: lightgrey;
-  text-align: center;
-  margin-bottom: 10px;
 }
 
 .jumbotron {
@@ -27,11 +31,35 @@ body {
   width: 55%;
 }
 
-.choice {
+#readyEat {
+  float: right;
+  color: green;
+}
+
+#devoured {
+  float: right;
+  color: red;
+}
+
+#eat,
+#delete {
+  transition-duration: 0.4s;
+  cursor: pointer;
   float: left;
-  margin-right: 3px;
+  margin-right: 4px;
+  margin-left: 2px;
   width: 25px;
   height: 25px;
+}
+
+#delete:hover {
+  transition-duration: 0.1s;
+  background: rgb(255, 128, 128);
+}
+
+#eat:hover{
+  transition-duration: 0.1s;
+  background: greenyellow;
 }
 
 .createForm {
@@ -52,4 +80,11 @@ body {
 #submit:hover {
   transition-duration: 0.2s;
   background: rgb(128, 255, 128);
+}
+
+footer {
+  background:rgba(128, 128, 128, 0.7);
+  bottom: 0;
+  width: 100%;
+  left: 0px;
 }
